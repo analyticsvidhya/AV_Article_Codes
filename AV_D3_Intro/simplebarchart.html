@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <script src="https://d3js.org/d3.v3.js"></script>
+</head>
+
+<body>
+    <script type="text/javascript">
+        //Data
+        var data_values = [5, 10, 30, 8, 45, 24, 16, 55, 60, 45, 32, 18, 11, 7];
+
+        //Create an SVG element
+        var svg = d3.select("body").append("svg").attr({
+            "width": 450,
+            "height": 400
+        });
+
+        //Create bars
+        var bars = svg.selectAll("rect").data(data_values).enter().append("rect").attr("width", "25").attr("height", function(d) {
+            return d * 5;
+        });
+
+        //Set x and y for bars
+        bars.attr("x", function(d, i) {
+                return i * 30;
+            })
+            .attr("y", function(d) {
+                return 400 - d * 5;
+            })
+
+        //Giving colour to bars
+        bars.attr("fill", "steelblue");
+
+        //Highlighting the extremes    
+        var max = d3.max(data_values);
+        var min = d3.min(data_values);
+
+        bars.filter(function(d){
+            return d==max;
+        }).attr("fill","green");
+        
+        bars.filter(function(d){
+            return d==min;
+        }).attr("fill","red");
+
+    </script>
+</body>
+
+</html>
