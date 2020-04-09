@@ -8,3 +8,5 @@ Structure:
 
 - original_code/
   - Inception_v1_from_Scratch.ipynb
+- improvements/
+  - Inception_v1_from_Scratch.ipynb
